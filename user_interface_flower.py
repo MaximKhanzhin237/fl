@@ -30,9 +30,9 @@ class SimpleCNN(torch.nn.Module):
 # 2. Загружаем обученную модель (укажите путь к вашим весам и классам)
 @st.cache(allow_output_mutation=True)
 def load_model():
-    n_classes = 3
-    class_names = ['rose', 'tulip', 'sunflower']  # Замените на ваши классы!
-    model = SimpleCNN(n_classes)
+    class_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
+    num_classes = len(class_names)
+    model = SimpleCNN(num_classes=num_classes)
     model.load_state_dict(torch.load('flower_cnn.pth', map_location='cpu'))
     model.eval()
     return model, class_names
